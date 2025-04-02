@@ -1,0 +1,37 @@
+--[[ 
+Made by tvoxq.
+.e to enable .d to disable
+]]
+local p = "."
+local uis = game:GetService("UserInputService")
+local as = false
+
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.OnMessageReceived.OnClientEvent:Connect(function(message)
+    if message == ".e" then
+        as = true
+    elseif message == ".d" then
+        as = false
+    end
+end)
+
+while true do
+    if as then
+        local swordPaths = {
+            game:GetService("Workspace"):FindFirstChild("Map") and game.Workspace.Map:FindFirstChild("Noob") and game.Workspace.Map.Noob:FindFirstChild("Sword"),
+            game:GetService("Workspace"):FindFirstChild("Map") and game.Workspace.Map:FindFirstChild("Blocks") and game.Workspace.Map.Blocks:FindFirstChild("Noob") and game.Workspace.Map.Blocks.Noob:FindFirstChild("Sword"),
+            game:GetService("Workspace"):FindFirstChild("Map") and game.Workspace.Map:FindFirstChild("Test") and game.Workspace.Map.Test:FindFirstChild("Noob") and game.Workspace.Map.Test.Noob:FindFirstChild("Sword")
+        }
+
+        for _, sword in pairs(swordPaths) do
+            if sword and sword:FindFirstChild("ClickDetector") then
+                local pClickDetector = sword.ClickDetector
+                if pClickDetector then
+                    fireclickdetector(pClickDetector)
+                    wait(0.5)
+                end
+            end
+        end
+    end
+
+    wait(1)
+end
