@@ -1,12 +1,8 @@
---[[ 
-Made by tvoxq.
-.e to enable .d to disable
-]]
-local p = "."
 local uis = game:GetService("UserInputService")
 local as = false
+local player = game.Players.LocalPlayer
 
-game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.OnMessageReceived.OnClientEvent:Connect(function(message)
+player.Chatted:Connect(function(message)
     if message == ".e" then
         as = true
     elseif message == ".d" then
